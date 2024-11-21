@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_pedidos/pantallaCarta.dart';
 
 class PantallaInicio extends StatefulWidget {
   @override
@@ -63,7 +64,11 @@ class _PantallaInicio extends State<PantallaInicio> {
                     color: Colors.white,  // Icon color
                   ),
                   onPressed: () {
-                    // Your action here
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (BuildContext) => PantallaCarta()
+                        )
+                    );
                   },
                 ),
               ],
