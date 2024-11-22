@@ -11,12 +11,50 @@ class PantallaCarta extends StatefulWidget {
 class _PantallaCartaState extends State<PantallaCarta> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      length: 3, 
+      child: Scaffold(
       appBar: AppBar(
         title: Text("CARTA"),
+        backgroundColor: const Color.fromARGB(255, 104, 160, 105),
+        elevation: 0,
+        bottom: TabBar(
+          labelColor: const Color.fromARGB(255, 63, 83, 94),
+          indicatorColor: const Color.fromARGB(255, 63, 83, 94),
+          indicatorSize: TabBarIndicatorSize.label,
+          tabs: <Widget>[
+            new Tab(
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: Text("PLATOS"),
+                ),
+            ),
+            new Tab(
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: Text("BEBIDAS"),
+                ),             
+            ),           
+            new Tab(
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: Text("POSTRES"),
+                ),
+            )
+          ],
+          ),
       ),
       drawer: menuLateral(),
-      body: Container(),
+      body: TabBarView(
+        children: <Widget>[
+          Container( child: Text("PLATOS"),),
+          Container( child: Text("BEBIDAS"),),
+          Container( child: Text("POSTRES"),),
+        ],
+            
+        
+        ),
+      ),
     );
   }
 }
