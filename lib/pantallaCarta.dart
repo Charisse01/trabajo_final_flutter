@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pantallainicio.dart';
+
 class PantallaCarta extends StatefulWidget {
 
   @override
@@ -27,6 +29,7 @@ class menuLateral extends StatelessWidget{
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text("Bakelove"), 
+            accountEmail: Text(""),
             decoration: BoxDecoration(
               color:  const Color.fromARGB(255, 104, 160, 105)
             ),
@@ -46,7 +49,7 @@ class menuLateral extends StatelessWidget{
             ),
             InkWell(
               child: new ListTile(
-                title: Text("Carta", style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),),
+                title: Text("CARTA", style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),),
                 leading: Icon(Icons.airplay, color: const Color.fromARGB(255, 104, 160, 105),),
               ),
               onTap: (){
