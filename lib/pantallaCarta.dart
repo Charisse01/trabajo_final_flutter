@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_pedidos/model/Carta.dart';
 
 import 'pantallainicio.dart';
 
@@ -47,17 +48,147 @@ class _PantallaCartaState extends State<PantallaCarta> {
       drawer: menuLateral(),
       body: TabBarView(
         children: <Widget>[
-          Container( child: Text("PLATOS"),),
-          Container( child: Text("BEBIDAS"),),
-          Container( child: Text("POSTRES"),),
-        ],
-            
-        
+          Container( 
+            padding: EdgeInsets.all(10),
+            child: GridView.builder(
+              itemCount: platos.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+                childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height /1.2),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 2
+                ), 
+              itemBuilder: (context, index){
+                return Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x000005cc),
+                        blurRadius: 30,
+                        offset: Offset(10, 10)
+                      )
+                    ]
+                  ),
+                  child: Column(
+                    children: <Widget> [
+                      Image.asset("assets/img/"+platos[index].imagen,
+                      width: 170,   // Establecer un ancho fijo
+                      height: 170,  // Establecer una altura fija
+                      fit: BoxFit.cover),
+
+                      Text(platos[index].nombre, style: TextStyle( fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text("S/."+platos[index].precio.toString(), style: TextStyle( fontSize: 15)),                        
+                        )                      
+                    ],
+                  ),
+                );
+              }              
+              ),
+          ),
+
+
+          Container( 
+            padding: EdgeInsets.all(10),
+            child: GridView.builder(
+              itemCount: bebidas.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+                childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height /1.2),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 2
+                ), 
+              itemBuilder: (context, index){
+                return Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x000005cc),
+                        blurRadius: 30,
+                        offset: Offset(10, 10)
+                      )
+                    ]
+                  ),
+                  child: Column(
+                    children: <Widget> [
+                      Image.asset("assets/img/"+bebidas[index].imagen,
+                      width: 170,   // Establecer un ancho fijo
+                      height: 170,  // Establecer una altura fija
+                      fit: BoxFit.cover),
+
+                      Text(bebidas[index].nombre, style: TextStyle( fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text("S/."+bebidas[index].precio.toString(), style: TextStyle( fontSize: 15)),                       
+                        ) 
+                    ],
+                  ),
+                );
+              }              
+            ),
+          ),
+          
+
+
+          Container( padding: EdgeInsets.all(10),
+            child: GridView.builder(
+              itemCount: postres.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+                childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height /1.2),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 2
+                ), 
+              itemBuilder: (context, index){
+                return Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x000005cc),
+                        blurRadius: 30,
+                        offset: Offset(10, 10)
+                      )
+                    ]
+                  ),
+                  child: Column(
+                    children: <Widget> [
+                      Image.asset("assets/img/"+postres[index].imagen,
+                      width: 170,   // Establecer un ancho fijo
+                      height: 170,  // Establecer una altura fija
+                      fit: BoxFit.cover),
+
+                      Text(postres[index].nombre, style: TextStyle( fontWeight: FontWeight.bold),),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text("S/."+postres[index].precio.toString(), style: TextStyle( fontSize: 15)),
+                        )
+                    ],
+                  ),
+                );
+              }              
+              ),
+          ),
+        ], 
         ),
       ),
     );
   }
 }
+
+
 class menuLateral extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
