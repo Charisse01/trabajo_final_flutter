@@ -166,8 +166,8 @@ class _PantallaCartaState extends State<PantallaCarta> {
                   child: Column(
                     children: <Widget> [
                       Image.asset("assets/img/"+postres[index].imagen,
-                      width: 170,   // Establecer un ancho fijo
-                      height: 170,  // Establecer una altura fija
+                      width: 160,   // Establecer un ancho fijo
+                      height: 160,  // Establecer una altura fija
                       fit: BoxFit.cover),
 
                       Text(postres[index].nombre, style: TextStyle( fontWeight: FontWeight.bold),),

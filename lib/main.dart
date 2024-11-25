@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_pedidos/carrito/Carrito.dart';
 import 'package:flutter_app_pedidos/pantallainicio.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+  ChangeNotifierProvider(
+    create: (context) => Carrito(),
+    child: MyApp(),
+    )
+);
 
 class MyApp extends StatelessWidget { 
   @override
