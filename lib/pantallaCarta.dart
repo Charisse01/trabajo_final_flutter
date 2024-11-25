@@ -45,6 +45,51 @@ class _PantallaCartaState extends State<PantallaCarta> {
                 ),
               ],
             ),
+            actions: <Widget>[
+              // Botón para el carrito de compras
+              new Stack(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.shopping_cart),
+                    onPressed: () {
+                      if (carrito.numeroItems != 0) {
+                        // Usamos ScaffoldMessenger para mostrar el SnackBar
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Ir al carrito", textAlign: TextAlign.center,),
+                        ));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Llenar el carrito", textAlign: TextAlign.center,),
+                        ));
+                      }
+                    },
+                  ),
+                ],
+              ),
+              new Positioned(
+                top: 8,
+                right: 8,
+                child: Container(
+                  padding: EdgeInsets.all(2),
+                  decoration: new BoxDecoration(
+                    color: const Color.fromARGB(255, 63, 83, 94),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  constraints: BoxConstraints(
+                    minWidth: 15,
+                    minHeight: 14,
+                  ),
+                  child: Text(
+                    carrito.numeroItems.toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           drawer: menuLateral(),
           body: TabBarView(
@@ -93,9 +138,9 @@ class _PantallaCartaState extends State<PantallaCarta> {
                             padding: EdgeInsets.only(top: 20),
                             child: Text(
                               "S/." + platos[index].precio.toString(),
-                              style: TextStyle(fontSize: 15),),
+                              style: TextStyle(fontSize: 15),
+                            ),
                           ),
-                          
                           ElevatedButton.icon(
                             onPressed: () {
                               setState(() {
@@ -114,8 +159,8 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94), 
-                              foregroundColor: Colors.white, // Cambiado de 'primary' a 'backgroundColor'
+                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
                             label: Text("Agregar"),
@@ -173,8 +218,6 @@ class _PantallaCartaState extends State<PantallaCarta> {
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
-
-
                           ElevatedButton.icon(
                             onPressed: () {
                               setState(() {
@@ -193,8 +236,8 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94), 
-                              foregroundColor: Colors.white, // Cambiado de 'primary' a 'backgroundColor'
+                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
                             label: Text("Agregar"),
@@ -252,7 +295,6 @@ class _PantallaCartaState extends State<PantallaCarta> {
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
-                          
                           ElevatedButton.icon(
                             onPressed: () {
                               setState(() {
@@ -271,8 +313,8 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94), 
-                              foregroundColor: Colors.white, // Cambiado de 'primary' a 'backgroundColor'
+                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
                             label: Text("Agregar"),
