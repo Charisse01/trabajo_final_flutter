@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_pedidos/pantallaCarrito.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app_pedidos/carrito/Carrito.dart';
 import 'package:flutter_app_pedidos/model/Carta.dart';
@@ -18,11 +19,11 @@ class _PantallaCartaState extends State<PantallaCarta> {
         child: Scaffold(
           appBar: AppBar(
             title: Text("CARTA"),
-            backgroundColor: const Color.fromARGB(255, 104, 160, 105),
+            backgroundColor: Colors.teal, // Usamos el color teal
             elevation: 0,
             bottom: TabBar(
-              labelColor: const Color.fromARGB(255, 63, 83, 94),
-              indicatorColor: const Color.fromARGB(255, 63, 83, 94),
+              labelColor: Colors.white, // Color de la etiqueta
+              indicatorColor: Colors.white, // Indicador del tab
               indicatorSize: TabBarIndicatorSize.label,
               tabs: <Widget>[
                 new Tab(
@@ -46,21 +47,29 @@ class _PantallaCartaState extends State<PantallaCarta> {
               ],
             ),
             actions: <Widget>[
-              // Botón para el carrito de compras
               new Stack(
                 children: <Widget>[
                   IconButton(
                     icon: Icon(Icons.shopping_cart),
                     onPressed: () {
+                      // Verifica si el carrito tiene items
                       if (carrito.numeroItems != 0) {
-                        // Usamos ScaffoldMessenger para mostrar el SnackBar
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Ir al carrito", textAlign: TextAlign.center,),
-                        ));
+                        // Si tiene items, navega a la pantalla del carrito
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => PantallaCarrito(),
+                          ),
+                        );
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Llenar el carrito", textAlign: TextAlign.center,),
-                        ));
+                        // Si no tiene items, muestra el SnackBar
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "Llenar el carrito",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
                       }
                     },
                   ),
@@ -72,7 +81,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                 child: Container(
                   padding: EdgeInsets.all(2),
                   decoration: new BoxDecoration(
-                    color: const Color.fromARGB(255, 63, 83, 94),
+                    color: Colors.teal, // Fondo del contador de items
                     borderRadius: BorderRadius.circular(4),
                   ),
                   constraints: BoxConstraints(
@@ -97,6 +106,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
               // Platos Tab
               Container(
                 padding: EdgeInsets.all(10),
+                color: Colors.teal.withOpacity(0.1), // Fondo con opacidad suave
                 child: GridView.builder(
                   itemCount: platos.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -159,7 +169,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              backgroundColor: Colors.teal, // Botón con color teal
                               foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
@@ -174,6 +184,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
               // Bebidas Tab
               Container(
                 padding: EdgeInsets.all(10),
+                color: Colors.teal.withOpacity(0.1),
                 child: GridView.builder(
                   itemCount: bebidas.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -236,7 +247,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              backgroundColor: Colors.teal, // Botón con color teal
                               foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
@@ -251,6 +262,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
               // Postres Tab
               Container(
                 padding: EdgeInsets.all(10),
+                color: Colors.teal.withOpacity(0.1),
                 child: GridView.builder(
                   itemCount: postres.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -313,7 +325,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+                              backgroundColor: Colors.teal, // Botón con color teal
                               foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
@@ -343,18 +355,18 @@ class menuLateral extends StatelessWidget {
             accountName: Text("Bakelove"),
             accountEmail: Text(""),
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 104, 160, 105),
+              color: Colors.teal, // Fondo del header
             ),
           ),
           InkWell(
             child: new ListTile(
               title: Text(
                 "INICIO",
-                style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),
+                style: TextStyle(color: Colors.teal),
               ),
               leading: Icon(
                 Icons.home,
-                color: const Color.fromARGB(255, 104, 160, 105),
+                color: Colors.teal,
               ),
             ),
             onTap: () {
@@ -369,11 +381,11 @@ class menuLateral extends StatelessWidget {
             child: new ListTile(
               title: Text(
                 "CARTA",
-                style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),
+                style: TextStyle(color: Colors.teal),
               ),
               leading: Icon(
                 Icons.airplay,
-                color: const Color.fromARGB(255, 104, 160, 105),
+                color: Colors.teal,
               ),
             ),
             onTap: () {
@@ -388,11 +400,11 @@ class menuLateral extends StatelessWidget {
             child: new ListTile(
               title: Text(
                 "CARRITO",
-                style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),
+                style: TextStyle(color: Colors.teal),
               ),
               leading: Icon(
                 Icons.add_shopping_cart,
-                color: const Color.fromARGB(255, 104, 160, 105),
+                color: Colors.teal,
               ),
             ),
             onTap: () {},
@@ -401,11 +413,11 @@ class menuLateral extends StatelessWidget {
             child: new ListTile(
               title: Text(
                 "INFO",
-                style: TextStyle(color: const Color.fromARGB(255, 104, 160, 105)),
+                style: TextStyle(color: Colors.teal),
               ),
               leading: Icon(
                 Icons.account_box,
-                color: const Color.fromARGB(255, 104, 160, 105),
+                color: Colors.teal,
               ),
             ),
             onTap: () {},

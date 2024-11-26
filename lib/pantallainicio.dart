@@ -10,7 +10,7 @@ class _PantallaInicio extends State<PantallaInicio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 63, 83, 94),
+      backgroundColor: Colors.teal.withOpacity(0.1), // Fondo con opacidad
       body: Container(
         child: Stack( 
           children: <Widget>[
@@ -20,26 +20,29 @@ class _PantallaInicio extends State<PantallaInicio> {
                 child: Container(
                   padding: EdgeInsets.only(right: 15, left: 5, top: 50),
                   decoration: BoxDecoration(
-                    color:  const Color.fromARGB(255, 104, 160, 105),
+                    color: Colors.teal, // Color de fondo para esta sección
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(200)
-                    )
+                      topLeft: Radius.circular(200),
+                    ),
                   ),
                   child: RotatedBox(
                     quarterTurns: 3,
                     child: Padding(
                       padding: EdgeInsets.only(top: 10),
-                    child: Text("Los mejores postres veganos...", style: TextStyle(
-                      color: const Color.fromARGB(255, 63, 83, 94),
-                      fontStyle: FontStyle.italic, 
-                      fontSize: 20,
-                      letterSpacing: 5
-                    ),),
-                    ), 
-                ),
+                      child: Text(
+                        "Los mejores postres veganos...",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic, 
+                          fontSize: 20,
+                          letterSpacing: 5,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              ),
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -57,17 +60,17 @@ class _PantallaInicio extends State<PantallaInicio> {
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(),
                     padding: EdgeInsets.all(13.0),
-                    backgroundColor: const Color.fromARGB(255, 104, 160, 105), // Correct property to set the background color
+                    backgroundColor: Colors.teal, // Color de fondo para el botón
                   ),
                   child: Icon(
                     Icons.chevron_right,
-                    color: Colors.white,  // Icon color
+                    color: Colors.white,  // Color del ícono
                   ),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (BuildContext) => PantallaCarta()
-                        )
+                        builder: (BuildContext) => PantallaCarta(),
+                      ),
                     );
                   },
                 ),
