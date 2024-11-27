@@ -5,7 +5,7 @@ class Carrito extends ChangeNotifier {
   Map<String, Item> _items = {};
 
   Map<String, Item> get items {
-    return {..._items}; // Asegúrate de devolver la copia de _items
+    return {..._items}; 
   }
 
   int get numeroItems {
