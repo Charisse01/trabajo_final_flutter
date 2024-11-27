@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_app_pedidos/carrito/Carrito.dart';
 import 'package:flutter_app_pedidos/model/Carta.dart';
 import 'package:flutter_app_pedidos/pantallainicio.dart';
+import 'package:flutter_app_pedidos/pantallaInfo.dart';
+
 
 class PantallaCarta extends StatefulWidget {
   @override
@@ -345,6 +347,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
   }
 }
 
+//*MENÚ LATERAL 
 class menuLateral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -396,6 +399,7 @@ class menuLateral extends StatelessWidget {
               );
             },
           ),
+          // Cambiar en el menuLateral donde usas pushReplacement
           InkWell(
             child: new ListTile(
               title: Text(
@@ -407,8 +411,15 @@ class menuLateral extends StatelessWidget {
                 color: Colors.teal,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext) => PantallaCarrito(),
+                ),
+              );
+            },
           ),
+          
           InkWell(
             child: new ListTile(
               title: Text(
@@ -420,8 +431,16 @@ class menuLateral extends StatelessWidget {
                 color: Colors.teal,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              // Aquí se navega a una nueva pantalla de información
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => PantallaInfo(), // Pantalla de Info
+                ),
+              );
+            },
           ),
+
         ],
       ),
     );

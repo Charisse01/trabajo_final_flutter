@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_pedidos/carrito/Carrito.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PantallaCarrito extends StatefulWidget {
   @override
@@ -226,11 +227,11 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                 ),
                 
           //* Botón de Enviar Pedido
-          floatingActionButtonLocation: FloatingActionButtonLocation.endTop, // Colocarlo en la parte superior derecha
+          floatingActionButtonLocation: FloatingActionButtonLocation.endTop, 
           floatingActionButton: Padding(
-            padding: const EdgeInsets.only(right: 20, top: 30), // Ajustamos la posición para no estar pegado
+            padding: const EdgeInsets.only(right: 20, top: 30), 
             child: GestureDetector(
-              onTap: () {
+              onTap: () async {
                 String pedido = "";
                 carrito.items.forEach((key, value) {
                   pedido = pedido + 
@@ -241,10 +242,26 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                   value.precio.toString() +
                   "\nPRECIO TOTAL: " + 
                   (value.cantidad * value.precio).toStringAsFixed(2) +
-                  "\n\n";
+                  "\n*****************************************\n";
                 });
+                
+                pedido = '$pedido' + "SUBTOTAL: " + carrito.subTotal.toStringAsFixed(2) + "\n";
+                pedido = '$pedido' + "IMPUESTO: " + carrito.impuesto.toStringAsFixed(2) + "\n";
+                pedido = '$pedido' + "TOTAL: " + carrito.total.toStringAsFixed(2) + "\n";
 
-                //* Mostrar el mensaje del pedido
+                //* Vincular a WhatsApp
+                String cell = "+18295278136";  
+                String mensaje = Uri.encodeComponent(pedido);  // Codificar el mensaje
+                String url = "https://wa.me/$cell?text=$mensaje";  // Formato para WhatsApp
+
+                // Comprobar si se puede lanzar la URL
+                if (await canLaunch(url)) {
+                  await launch(url);  // Lanzar la URL
+                } else {
+                  throw('No se pudo enviar mensaje por WhatsApp');
+                }
+          
+                //* Mostrar el mensaje del pedido en una ventana emergente
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
@@ -255,7 +272,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                         onPressed: () => Navigator.of(context).pop(),
                         child: Text(
                           "Cerrar",
-                          style: TextStyle(color: Colors.teal), // Cambiar color a teal
+                          style: TextStyle(color: Colors.teal),  
                         ),
                       ),
                     ],
@@ -279,7 +296,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                     ),
                   ],
                 ),
-                child: Icon(Icons.send, color: Colors.white, size: 30), // Ícono del botón
+                child: Icon(Icons.send, color: Colors.white, size: 30),  // Ícono del botón
               ),
             ),
           ),
