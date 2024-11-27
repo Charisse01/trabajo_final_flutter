@@ -15,20 +15,26 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
         return Scaffold(
           appBar: AppBar(
             title: Text("Carrito de Pedidos", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            elevation: 0,
+            elevation: 5,
             backgroundColor: Colors.teal,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+            ),
           ),
           body: carrito.items.isEmpty
               ? Center(child: Text("Carrito Vacío", style: TextStyle(fontSize: 18, color: Colors.grey)))
-              : Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
+              : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      //* Lista de productos
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: carrito.items.length,
                         itemBuilder: (context, index) {
                           var item = carrito.items.values.elementAt(index);
                           return Card(
-                            margin: EdgeInsets.all(10),
+                            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -126,7 +132,8 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                                       ],
                                     ),
                                   ),
-                                  // Precio total del producto
+
+                                  //* Precio total del producto
                                   Container(
                                     height: 100,
                                     width: 80,
@@ -146,78 +153,136 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                           );
                         },
                       ),
-                    ),
 
-
-                    //* Contenedor para el resumen (subtotal, impuesto y total)
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: Colors.teal,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 10,
-                              offset: Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //* Subtotal
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Subtotal:",
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                                Text(
-                                  "S/. ${carrito.subTotal.toStringAsFixed(2)}",
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            //* Impuesto
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Impuesto (18%):",
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                                Text(
-                                  "S/. ${carrito.impuesto.toStringAsFixed(2)}",
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            //* Total
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Total:",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                                Text(
-                                  "S/. ${carrito.total.toStringAsFixed(2)}",
-                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
+                      //* Contenedor para el resumen (subtotal, impuesto y total)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: Colors.teal,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //* Subtotal
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Subtotal:",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                  Text(
+                                    "S/. ${carrito.subTotal.toStringAsFixed(2)}",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              //* Impuesto
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Impuesto (18%):",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                  Text(
+                                    "S/. ${carrito.impuesto.toStringAsFixed(2)}",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              //* Total
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Total:",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                  Text(
+                                    "S/. ${carrito.total.toStringAsFixed(2)}",
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                
+          //* Botón de Enviar Pedido
+          floatingActionButtonLocation: FloatingActionButtonLocation.endTop, // Colocarlo en la parte superior derecha
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(right: 20, top: 30), // Ajustamos la posición para no estar pegado
+            child: GestureDetector(
+              onTap: () {
+                String pedido = "";
+                carrito.items.forEach((key, value) {
+                  pedido = pedido + 
+                  value.nombre + 
+                  "\nCANTIDAD: " + 
+                  value.cantidad.toString() +
+                  "\nPRECIO UNITARIO: " + 
+                  value.precio.toString() +
+                  "\nPRECIO TOTAL: " + 
+                  (value.cantidad * value.precio).toStringAsFixed(2) +
+                  "\n\n";
+                });
+
+                //* Mostrar el mensaje del pedido
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Resumen de Pedido"),
+                    content: Text(pedido),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text(
+                          "Cerrar",
+                          style: TextStyle(color: Colors.teal), // Cambiar color a teal
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.teal[400]!, Colors.teal[600]!],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 8,
+                      offset: Offset(0, 5),
                     ),
                   ],
                 ),
+                child: Icon(Icons.send, color: Colors.white, size: 30), // Ícono del botón
+              ),
+            ),
+          ),
         );
       },
     );
