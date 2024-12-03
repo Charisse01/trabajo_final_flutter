@@ -296,7 +296,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                     ),
                   ],
                 ),
-                child: Icon(Icons.send, color: Colors.white, size: 30),  // Ícono del botón
+                child: Icon(Icons.send, color: Colors.white, size: 30),  
               ),
             ),
           ),

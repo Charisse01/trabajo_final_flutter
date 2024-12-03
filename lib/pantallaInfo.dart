@@ -25,36 +25,35 @@ class PantallaInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Imagen representativa de la app
               Center(
                 child: Container(
-                  width: 120, // Tamaño ajustado para el logo
-                  height: 120, // Tamaño ajustado para el logo
+                  width: 120, 
+                  height: 120, 
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white, // Borde blanco para destacar el logo
+                      color: Colors.white, 
                       width: 6,
                     ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 10, // Sombra más suave
-                        offset: Offset(0, 4), // Sombra debajo para resaltar
+                        blurRadius: 10, 
+                        offset: Offset(0, 4), 
                       ),
                     ],
                   ),
                   child: ClipOval(
                     child: Image.asset(
-                      'assets/img/bakelove.png', // Asegúrate de tener esta imagen
-                      fit: BoxFit.contain, // Ajuste para que no se recorte la imagen
+                      'assets/img/bakelove.png', 
+                      fit: BoxFit.contain, 
                     ),
                   ),
                 ),
               ),
               SizedBox(height: 30),
 
-              // Título de bienvenida
+              //info
               Text(
                 "¡Bienvenido a Bakelove!",
                 style: TextStyle(
@@ -71,19 +70,18 @@ class PantallaInfo extends StatelessWidget {
               ),
               SizedBox(height: 30),
 
-              // Sección de contacto
+              // sección de contacto
               Text(
                 "Contáctanos para más información:",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               SizedBox(height: 20),
 
-              // Correo electrónico
+              // correo electrónico
               _buildContactCard(
                 icon: Icons.email,
                 text: "bakelovefast@gmail.com",
                 onTap: () {
-                  // Acción para correo
                 },
               ),
               SizedBox(height: 20),
@@ -93,7 +91,6 @@ class PantallaInfo extends StatelessWidget {
                 icon: Icons.phone,
                 text: "+1 (829) 527-8136",
                 onTap: () {
-                  // Acción para teléfono
                 },
               ),
               SizedBox(height: 20),
@@ -103,12 +100,10 @@ class PantallaInfo extends StatelessWidget {
                 icon: Icons.account_box,
                 text: "@BakeloveRD_fast",
                 onTap: () {
-                  // Acción para redes sociales
                 },
               ),
               SizedBox(height: 30),
 
-              // Agradecimiento
               Text(
                 "¡Gracias por elegirnos! Estamos aquí para hacer tus pedidos más fáciles y rápidos.",
                 style: TextStyle(fontSize: 16, color: Colors.white70),
@@ -140,7 +135,7 @@ class PantallaInfo extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(fontSize: 16, color: Colors.teal),
-                  overflow: TextOverflow.ellipsis, // Evita que el texto se desborde
+                  overflow: TextOverflow.ellipsis, 
                 ),
               ),
             ],

@@ -5,6 +5,8 @@ import 'package:flutter_app_pedidos/carrito/Carrito.dart';
 import 'package:flutter_app_pedidos/model/Carta.dart';
 import 'package:flutter_app_pedidos/pantallainicio.dart';
 import 'package:flutter_app_pedidos/pantallaInfo.dart';
+import 'package:flutter_app_pedidos/pantallapromociones.dart';
+
 
 
 class PantallaCarta extends StatefulWidget {
@@ -21,11 +23,11 @@ class _PantallaCartaState extends State<PantallaCarta> {
         child: Scaffold(
           appBar: AppBar(
             title: Text("CARTA"),
-            backgroundColor: Colors.teal, // Usamos el color teal
+            backgroundColor: Colors.teal, 
             elevation: 0,
             bottom: TabBar(
-              labelColor: Colors.white, // Color de la etiqueta
-              indicatorColor: Colors.white, // Indicador del tab
+              labelColor: Colors.white, 
+              indicatorColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.label,
               tabs: <Widget>[
                 new Tab(
@@ -83,7 +85,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                 child: Container(
                   padding: EdgeInsets.all(2),
                   decoration: new BoxDecoration(
-                    color: Colors.teal, // Fondo del contador de items
+                    color: Colors.teal, 
                     borderRadius: BorderRadius.circular(4),
                   ),
                   constraints: BoxConstraints(
@@ -108,7 +110,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
               // Platos Tab
               Container(
                 padding: EdgeInsets.all(10),
-                color: Colors.teal.withOpacity(0.1), // Fondo con opacidad suave
+                color: Colors.teal.withOpacity(0.1), 
                 child: GridView.builder(
                   itemCount: platos.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -171,7 +173,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: Colors.teal, // Botón con color teal
+                              backgroundColor: Colors.teal, 
                               foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
@@ -249,7 +251,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20.0)),
                               ),
-                              backgroundColor: Colors.teal, // Botón con color teal
+                              backgroundColor: Colors.teal, 
                               foregroundColor: Colors.white,
                             ),
                             icon: Icon(Icons.add_shopping_cart),
@@ -358,9 +360,10 @@ class menuLateral extends StatelessWidget {
             accountName: Text("Bakelove"),
             accountEmail: Text(""),
             decoration: BoxDecoration(
-              color: Colors.teal, // Fondo del header
+              color: Colors.teal, 
             ),
           ),
+          //* Pestaña INICIO
           InkWell(
             child: new ListTile(
               title: Text(
@@ -380,6 +383,8 @@ class menuLateral extends StatelessWidget {
               );
             },
           ),
+
+          //* Pestaña CARTA
           InkWell(
             child: new ListTile(
               title: Text(
@@ -399,7 +404,8 @@ class menuLateral extends StatelessWidget {
               );
             },
           ),
-          // Cambiar en el menuLateral donde usas pushReplacement
+          
+          //* Pestaña CARRITO
           InkWell(
             child: new ListTile(
               title: Text(
@@ -419,7 +425,8 @@ class menuLateral extends StatelessWidget {
               );
             },
           ),
-          
+
+          //* Pestaña INFO
           InkWell(
             child: new ListTile(
               title: Text(
@@ -435,12 +442,32 @@ class menuLateral extends StatelessWidget {
               // Aquí se navega a una nueva pantalla de información
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => PantallaInfo(), // Pantalla de Info
+                  builder: (BuildContext context) => PantallaInfo(), 
                 ),
               );
             },
           ),
 
+           //* Pestaña Promociones
+          InkWell(
+            child: ListTile(
+              title: Text(
+                "PROMOCIONES",
+                style: TextStyle(color: Colors.teal),
+              ),
+              leading: Icon(
+                Icons.local_offer,
+                color: Colors.teal,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => PantallaPromociones(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

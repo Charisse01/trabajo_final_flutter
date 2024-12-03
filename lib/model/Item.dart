@@ -6,7 +6,6 @@ class Item {
   String imagen; 
   int cantidad; 
 
-  // Constructor estándar
   Item({
     required this.id,
     required this.nombre,
@@ -16,7 +15,6 @@ class Item {
     required this.cantidad,
   });
 
-  // Named constructor para crear un Item desde un Map
   Item.fromMap(Map<String, dynamic> o)
       : id = o["id"],
         nombre = o["nombre"],

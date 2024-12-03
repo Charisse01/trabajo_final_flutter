@@ -45,7 +45,7 @@ class Carrito extends ChangeNotifier {
           precio: oldItem.precio,
           unidad: oldItem.unidad,
           imagen: oldItem.imagen,
-          cantidad: oldItem.cantidad + cantidad,  // Puedes agregar más de 1 si lo deseas
+          cantidad: oldItem.cantidad + cantidad,  
         ),
       );
     } else {
@@ -61,12 +61,12 @@ class Carrito extends ChangeNotifier {
         ),
       );
     }
-    notifyListeners();  // Notifica a los listeners solo después de realizar el cambio
+    notifyListeners();  
   }
 
   void removerItem(String productoId) {
     _items.remove(productoId);
-    notifyListeners();  // Notifica a los listeners después de eliminar un item
+    notifyListeners();  
   }
 
   void incrementarCantidadItem(String productoId) {
@@ -82,7 +82,7 @@ class Carrito extends ChangeNotifier {
           cantidad: oldItem.cantidad + 1,
         ),
       );
-      notifyListeners();  // Notifica a los listeners cuando la cantidad se incrementa
+      notifyListeners();  
     }
   }
 
@@ -100,15 +100,15 @@ class Carrito extends ChangeNotifier {
           cantidad: oldItem.cantidad - 1,
         ),
       );
-      notifyListeners();  // Notifica a los listeners cuando la cantidad disminuye
+      notifyListeners();  
     } else {
       _items.remove(productoId);
-      notifyListeners();  // Notifica a los listeners después de eliminar el item si la cantidad es 1
+      notifyListeners();  
     }
   }
 
   void removeCarrito() {
-    _items.clear();  // Utiliza clear() para vaciar el carrito
-    notifyListeners();  // Notifica a los listeners después de vaciar el carrito
+    _items.clear();  
+    notifyListeners();  
   }
 }
