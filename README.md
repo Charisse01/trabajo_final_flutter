@@ -1,6 +1,8 @@
 ## Bienvenido al repositorio de Bakelove!! 😄👋
 ![](https://raw.githubusercontent.com/Charisse01/trabajo_final_flutter/master/assets/img/bakelove.png)
+
 **Instalaciones** 👀
+
 Debes tener instalado: 
 - Android Studio
 - Visual Studio Code
@@ -50,3 +52,9 @@ flutter_app_pedidos/
 │   ├── pantallaPromociones.dart # Pantalla de promociones
 ├── pubspec.yaml                # Archivo de configuración del proyecto
 ├── README.md                   # Archivo de documentación
+
+## Próximas Mejoras 🛡️ 
+
+- Integrar autenticación de usuarios.
+- Crear una base de datos local o en la nube para gestionar los pedidos y el menú.
+- Agregar soporte multilingüe.
